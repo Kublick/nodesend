@@ -1,11 +1,18 @@
 const express = require("express");
 const connectDB = require("./config/db.js");
+const cors = require("cors");
 
 // crear server
 const app = express();
 
 // Conectar DB
 connectDB();
+
+// habilitar cors
+const corsoptions = {
+	origin: process.env.FRONTEND_URL,
+};
+app.use(cors(corsoptions));
 
 // puerto app
 const port = process.env.PORT || 4000;
